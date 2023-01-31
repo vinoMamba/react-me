@@ -1,14 +1,6 @@
 import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols'
 import type { ElementType, Key, Props, ReactElement, Ref, Type } from 'shared/ReactTypes'
 
-/**
- *
- * @param type
- * @param key
- * @param ref
- * @param props
- * @returns
- */
 export const reactElement = function (type: Type, key: Key, ref: Ref, props: Props): ReactElement {
   const element = {
     $$typeof: REACT_ELEMENT_TYPE,
@@ -21,12 +13,6 @@ export const reactElement = function (type: Type, key: Key, ref: Ref, props: Pro
   return element
 }
 
-/**
- * @param type
- * @param config
- * @param mabyeChildren
- * @returns
- */
 export const jsx = function (type: ElementType, config: any, ...mabyeChildren: any) {
   let key: Key = null
   const porps: Props = {}
