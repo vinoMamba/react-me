@@ -17,7 +17,7 @@ export const jsx = function (type: ElementType, config: any, ...mabyeChildren: a
   let key: Key = null
   const porps: Props = {}
   let ref: Ref = null
-  for (const prop of config) {
+  for (const prop in config) {
     const val = config[prop]
 
     if (prop === 'key') {
@@ -52,4 +52,31 @@ export const jsx = function (type: ElementType, config: any, ...mabyeChildren: a
   return reactElement(type, key, ref, porps)
 }
 
-export const jsxDEV = jsx
+export const jsxDEV = function (type: ElementType, config: any) {
+  let key: Key = null
+  const porps: Props = {}
+  let ref: Ref = null
+  for (const prop in config) {
+    const val = config[prop]
+
+    if (prop === 'key') {
+      if (prop !== undefined) {
+        key = `${val}`
+      }
+      continue
+    }
+
+    if (prop === 'ref') {
+      if (prop !== undefined) {
+        ref = val
+      }
+      continue
+    }
+
+    if ({}.hasOwnProperty.call(config, prop)) {
+      porps[prop] = val
+    }
+  }
+
+  return reactElement(type, key, ref, porps)
+}
