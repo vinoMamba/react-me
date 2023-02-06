@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import tsPlugin from 'rollup-plugin-typescript2'
 import cjsPlugin from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace'
 
 const pkgPath = path.resolve(__dirname, '../../packages')
 const distPath = path.resolve(__dirname, '../../dist/node_modules')
@@ -19,8 +20,11 @@ export function getPkgJson(pkgName) {
   return JSON.parse(pkgStr)
 }
 
-export function getBaseRollupPlugins(tsConfig = {}) {
+export function getBaseRollupPlugins({ alias = {
+  __DEV__: true
+} }, tsConfig = {}) {
   return [
+    replace(alias),
     cjsPlugin(),
     tsPlugin(tsConfig),
   ]

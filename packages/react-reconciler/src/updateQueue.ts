@@ -35,7 +35,7 @@ export const enqueueUpdate = <State>(updateQueue: UpdateQueue<State>, update: Up
  */
 export const processUpdateQueue = <State>(
   baseState: State,
-  pendingUpdate: Update<State>,
+  pendingUpdate: Update<State> | null,
 ): { memorizedState: State } => {
   const result = { memorizedState: baseState }
   if (pendingUpdate !== null) {
