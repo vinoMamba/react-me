@@ -10,12 +10,21 @@ function prepareRefreshStack(root: FiberRootNode) {
   workInProgress = createWorkInProgress(root.current, {})
 }
 
+/**
+ * 在 fiber 中调度更新 
+ * @param fiber 
+ */
 export function scheduleUpdateOnFiber(fiber: FiberNode) {
   // TODO: schedule
   const root = markUpdateFromFiberToRoot(fiber)
   renderRoot(root)
 }
 
+/**
+ * get root
+ * @param fiber 
+ * @returns 
+ */
 function markUpdateFromFiberToRoot(fiber: FiberNode) {
   let node = fiber
   let parent = node.return

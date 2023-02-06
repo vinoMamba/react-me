@@ -27,6 +27,12 @@ export const enqueueUpdate = <State>(updateQueue: UpdateQueue<State>, update: Up
   updateQueue.shared.pending = update
 }
 
+/**
+ * 消费更新队列
+ * @param baseState 
+ * @param pendingUpdate 
+ * @returns 
+ */
 export const processUpdateQueue = <State>(
   baseState: State,
   pendingUpdate: Update<State>,

@@ -46,6 +46,12 @@ export class FiberNode {
   }
 }
 
+/**
+ * React.createRoot(rootElement).render(<App />)
+ * 1. createRoot 会创建一个 FiberRootNode。即当前应用统一的根节点
+ * 2. rootElement hostRootFiber
+ */
+
 export class FiberRootNode {
   container: Container
   current: FiberNode
@@ -58,6 +64,12 @@ export class FiberRootNode {
   }
 }
 
+/**
+ * 创建 workInProgress FiberNode 
+ * @param current 
+ * @param pendingProps 
+ * @returns 
+ */
 export const createWorkInProgress = (current: FiberNode, pendingProps: Props): FiberNode | null => {
   let wip = current.alternate
   if (wip === null) {
