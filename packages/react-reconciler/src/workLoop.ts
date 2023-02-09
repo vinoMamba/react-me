@@ -21,7 +21,7 @@ export function scheduleUpdateOnFiber(fiber: FiberNode) {
 }
 
 /**
- * get root
+ * 
  * @param fiber 
  * @returns 
  */
@@ -61,8 +61,8 @@ function workLoop() {
 }
 
 function performUnitOfWork(fiber: FiberNode) {
-  // ...
   const next = beginWork(fiber)
+  // ...
   fiber.memoizedProps = fiber.pendingProps
 
   if (next === null) {
